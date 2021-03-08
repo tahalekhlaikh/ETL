@@ -30,6 +30,7 @@ for(let i = 0; i < sheets.length; i++)
       data.push(res) 
    }) 
 } 
+
 let test = JSON.stringify(data, null, 2);
 const fs = require('fs');
 fs.writeFile('output.json', test, (err) => {
@@ -37,5 +38,18 @@ fs.writeFile('output.json', test, (err) => {
     console.log('Data written to file');
 });
   
-// Printing data 
-console.log(data)
+
+const dataPath = './output.json';
+  
+
+app.get('/users', (req, res) => {
+	fs.readFile(dataPath, 'utf8', (err, data) => {
+	if (err) {
+			throw err;
+		}
+  
+	res.send(JSON.parse(data));
+	});
+});
+  
+  app.listen(3400)
