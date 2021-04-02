@@ -1,11 +1,13 @@
 var express = require('express')
-
+const mongoose =require('mongoose');
 var reader = require("xlsx");
 var xlstojson = require("xls-to-json");
 const {graphqlHTTP} = require('express-graphql')
 var cors = require('cors');
 var app = express()
+
 app.use(cors())
+
 
 
 app.use(function(req, res, next) { //allow cross origin requests
@@ -19,8 +21,8 @@ app.use(function(req, res, next) { //allow cross origin requests
 // configuration
 app.use(express.static(__dirname + '/public'));
 app.use('/public/uploads',express.static(__dirname + '/public/uploads'));
-
-const file = reader.readFile('./BDD-Pays-V0.xlsx')
+{/*
+const file = reader.readFile('./BDD-Pays.xlsx')
 let data = []
 const sheets = file.SheetNames
 for(let i = 0; i < sheets.length; i++)
@@ -52,8 +54,10 @@ app.get('/pays', (req, res) => {
 	res.send(JSON.parse(data));
 	});
 });
+*/}
 
-const countryData = require("./MOCK_DATA.json");
+const countryData =require('./output.json')
+//const countryData =JSON.parse(test)
 const{
     GraphQLSchema,
     GraphQLObjectType,
@@ -73,7 +77,52 @@ const CountryType =new GraphQLObjectType({
 		IDH:{type:GraphQLNonNull(GraphQLString)},
 		Monnaie:{type:GraphQLNonNull(GraphQLString)},
 		Regime_politique:{type:GraphQLNonNull(GraphQLString)},
-		Langue_Commerciale:{type:GraphQLNonNull(GraphQLString)},
+		Langue_officielle:{type:GraphQLNonNull(GraphQLString)},
+        PIB_2009_USD:{type:(GraphQLString)},
+		PIB_2011_USD:{type:(GraphQLString)},
+		PIB_2012_USD:{type:(GraphQLString)},
+		PIB_2013_USD:{type:(GraphQLString)},
+		PIB_2015_USD:{type:(GraphQLString)},
+		PIB_2017_USD:{type:(GraphQLString)},
+		PIB_2019_USD:{type:(GraphQLString)},
+		Croissance_du_PIB:{type:(GraphQLString)},
+        PIB:{type:(GraphQLString)},
+		Flux_entrants:{type:(GraphQLString)},
+		Flux_sortants:{type:(GraphQLString)},
+		Score_doing_Business:{type:(GraphQLString)},
+		Importations_2019:{type:(GraphQLString)},
+		Exportations_2019:{type:(GraphQLString)},
+		Balance_commerciale:{type:(GraphQLString)},
+
+		Taux_de_penetration_des_importations:{type:(GraphQLString)},
+		Taux_douverture:{type:(GraphQLString)},
+
+
+		Nature_daccord:{type:(GraphQLString)},
+		Date_de_signature:{type:(GraphQLString)},
+		Entree_en_vigueur:{type:(GraphQLString)},
+		Champ_dapplication:{type:(GraphQLString)},
+		Duree:{type:(GraphQLString)},
+		Documents_necessaires_importation:{type:(GraphQLString)},
+		Documents_necessaires_exportation:{type:(GraphQLString)},
+		Indice_de_connectivite:{type:(GraphQLString)},
+		Classement_indice:{type:(GraphQLString)},
+		Connectivite_des_transports_maritimes_reguliers:{type:(GraphQLString)},
+		Classement_connectivite:{type:(GraphQLString)},
+		Qualite_infrastructure_commerciale_et_des_transports:{type:(GraphQLString)},
+		Competence_qualite_services_logistiques:{type:(GraphQLString)},
+		Classement_competence:{type:(GraphQLString)},
+		Efficacite_processus_douanement:{type:(GraphQLString)},
+		Classement_efficacite:{type:(GraphQLString)},
+		Performance_globale:{type:(GraphQLString)},
+		Classement_performance:{type:(GraphQLString)},
+
+
+
+
+
+
+
 
     })
 })
@@ -85,14 +134,9 @@ const RootQueryType = new GraphQLObjectType({
 		type: CountryType,
 		description: 'A Single Country',
 		args: {
-			Continent:{type:GraphQLString},
-			Superficie:{type:GraphQLString},
+
 		  Pays_partenaires_Trade_Map:{ type: GraphQLString},
-		  Capitale:{type:GraphQLString},
-		  IDH:{type:GraphQLString},
-		  Monnaie:{type:GraphQLString},
-		  Regime_politique:{type:GraphQLString},
-		  Langue_Commerciale:{type:GraphQLString},
+
 		},
 		resolve: (parent, args) => countryData.find(book => book.Pays_partenaires_Trade_Map === args.Pays_partenaires_Trade_Map)
 	  },

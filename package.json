@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "express-graphql": "^0.12.0",
     "graphqm": "^0.0.0",
     "mongodb": "^3.6.4",
+    "mongoose": "^5.12.2",
     "node-excel-to-json": "0.0.3",
     "nodemon": "^2.0.7",
     "xls-to-json": "^0.4.0",
