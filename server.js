@@ -78,6 +78,7 @@ const CountryType =new GraphQLObjectType({
 		Monnaie:{type:GraphQLNonNull(GraphQLString)},
 		Regime_politique:{type:GraphQLNonNull(GraphQLString)},
 		Langue_officielle:{type:GraphQLNonNull(GraphQLString)},
+		Langue_du_Business:{type:GraphQLNonNull(GraphQLString)},
         PIB_2009_USD:{type:(GraphQLString)},
 		PIB_2011_USD:{type:(GraphQLString)},
 		PIB_2012_USD:{type:(GraphQLString)},
@@ -86,6 +87,7 @@ const CountryType =new GraphQLObjectType({
 		PIB_2017_USD:{type:(GraphQLString)},
 		PIB_2019_USD:{type:(GraphQLString)},
 		Croissance_du_PIB:{type:(GraphQLString)},
+
         PIB:{type:(GraphQLString)},
 		Flux_entrants:{type:(GraphQLString)},
 		Flux_sortants:{type:(GraphQLString)},
@@ -93,6 +95,7 @@ const CountryType =new GraphQLObjectType({
 		Importations_2019:{type:(GraphQLString)},
 		Exportations_2019:{type:(GraphQLString)},
 		Balance_commerciale:{type:(GraphQLString)},
+
 
 		Taux_de_penetration_des_importations:{type:(GraphQLString)},
 		Taux_douverture:{type:(GraphQLString)},
@@ -107,6 +110,7 @@ const CountryType =new GraphQLObjectType({
 		Documents_necessaires_exportation:{type:(GraphQLString)},
 		Indice_de_connectivite:{type:(GraphQLString)},
 		Classement_indice:{type:(GraphQLString)},
+		Classement_qualite:{type:(GraphQLString)},
 		Connectivite_des_transports_maritimes_reguliers:{type:(GraphQLString)},
 		Classement_connectivite:{type:(GraphQLString)},
 		Qualite_infrastructure_commerciale_et_des_transports:{type:(GraphQLString)},
@@ -116,6 +120,16 @@ const CountryType =new GraphQLObjectType({
 		Classement_efficacite:{type:(GraphQLString)},
 		Performance_globale:{type:(GraphQLString)},
 		Classement_performance:{type:(GraphQLString)},
+		Distance_culturelle:{type:(GraphQLString)},
+		Distance_politique:{type:(GraphQLString)},
+		Distance_reglementaire:{type:(GraphQLString)},
+		Distance_geographique:{type:(GraphQLString)},
+		Distance_economique:{type:(GraphQLString)},
+
+
+
+
+
 
 
 
