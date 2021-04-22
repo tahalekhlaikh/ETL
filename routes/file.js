@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const multer = require('multer');
 const File = require('../models/file');
+const Pays = require('../models/pays');
 const Router = express.Router();
 var reader = require("xlsx");
 const upload = multer({
@@ -69,12 +70,23 @@ Router.post(
 
 
 Router.post('/choosen',function (req, res)  {
-	console.log(req.body.name);
+
 
 	  try {
+		console.log(req.body.id);
+		File.updateMany({}, {
+			choosen:false,
+		}, function(err, affected, resp) {
+		   console.log(resp);
+		})
+		File.updateOne({_id:req.body.id}, {
+			choosen:true,
+		}, function(err, affected, resp) {
+		   console.log(resp);
+		})
 
 
-		const file = reader.readFile(req.body.name)
+		const file = reader.readFile(req.body.file_path)
 		let data = []
 		const sheets = file.SheetNames
 		for(let i = 0; i < sheets.length; i++)
@@ -87,10 +99,17 @@ Router.post('/choosen',function (req, res)  {
 		}
 
 		let test = JSON.stringify(data, null, 2);
-		console.log("hey")
-		console.log(test)
-		res.send('file uploaded successfully.');
 
+		console.log(test)
+
+		Pays.deleteMany({}, function(err) {
+			Pays.insertMany(JSON.parse(test), function(error, docs) {});;
+		});
+
+
+		//Pays.insertMany(JSON.parse(test), function(error, docs) {});
+
+		res.send('file choosen successfully.');
 
 	  } catch (error) {
 		res.status(400).send('Error while try Choosin file. Try again later.');
@@ -108,9 +127,22 @@ Router.post('/choosen',function (req, res)  {
 
 
 
-  Router.delete('/choosen/:file_path', async (req, res) => {
-	try {
+  Router.delete('/delete', async (req, res) => {
 
+	try {
+		console.log(req.body.file_path);
+		var fs = require('fs');
+
+		File.deleteOne({_id: req.body.id }, function (err) {
+			if(err) console.log(err);
+			console.log("Successful deletion");
+		  });
+fs.unlink(req.body.file_path, function (err) {
+    if (err) throw err;
+    // if no error, file has been deleted successfully
+    console.log('File deleted!');
+});
+		console.log("success")
 	} catch (error) {
 	  res.status(400).send('Error while downloading file. Try again later.');
 	}

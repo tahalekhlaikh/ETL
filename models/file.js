@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var reader = require("xlsx");
+
 const fileSchema = mongoose.Schema(
 	{
 	  year: {
@@ -21,7 +21,11 @@ const fileSchema = mongoose.Schema(
 		type: String,
 		required: true
 	  },
-
+	  choosen: {
+		type: Boolean,
+		required: true,
+		default: false
+	  },
 
 	  file_mimetype: {
 		type: String,
@@ -34,39 +38,6 @@ const fileSchema = mongoose.Schema(
   );
 
   const File = mongoose.model('File', fileSchema);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

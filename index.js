@@ -41,7 +41,7 @@ for(let i = 0; i < sheets.length; i++)
 
 let test = JSON.stringify(data, null, 2);
 
-{/*const fs = require('fs');
+const fs = require('fs');
 fs.writeFile('output.json', test, (err) => {
     if (err) throw err;
     console.log('Data written to file');
@@ -59,7 +59,7 @@ app.get('/pays', (req, res) => {
 
 	res.send(JSON.parse(data));
 	});
-})*/}
+})
 
 mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
@@ -260,23 +260,9 @@ const CountryType =new GraphQLObjectType({
 		Importations_Maroc_2019:{type:(GraphQLString)},
 		TCAM_2012_2019_des_importations_marocaines:{type:(GraphQLString)},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     })
 })
+
 const RootQueryType = new GraphQLObjectType({
 	name: 'Query',
 	description: 'Root Query',
@@ -307,21 +293,6 @@ const RootQueryType = new GraphQLObjectType({
   app.use('/graphql', graphqlHTTP({
 	graphiql:true,
 	schema:schema
-
-	/*schema:buildSchema(`
-	type RootQuery{
-		pays:[{String!}]!
-	}
-		schema{
-			query:RootQuery
-		}`
-	),
-	rootValue:{
-		pays:()=>{
-			return Pays.find()
-
-		}
-	}*/
 }))
 
 
