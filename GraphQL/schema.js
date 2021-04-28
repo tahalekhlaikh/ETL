@@ -1,4 +1,8 @@
 const Pays = require('../models/pays');
+const Marche_mondial= require('../models/marche_mondial');
+const Marche_Type=require('./Marche_Type')
+const Principaux_importateurs_mondiaux_Type=require('./Principaux_importateurs_mondiaux_Type')
+const Principaux_importateurs_mondiaux=require('../models/Principaux_importateurs_mondiaux');
 const{
     GraphQLSchema,
     GraphQLObjectType,
@@ -99,13 +103,26 @@ const CountryType =new GraphQLObjectType({
     })
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 const RootQueryType = new GraphQLObjectType({
 	name: 'Query',
 	description: 'Root Query',
 	fields: () => ({
 	  countrySingle: {
 		type: CountryType,
-		description: 'A Single Country',
+		description: 'Un seul Pays',
 		args: {
 
 			Pays_partenaires_Trade_Map:{ type: GraphQLString},
@@ -113,10 +130,26 @@ const RootQueryType = new GraphQLObjectType({
 		},
 		resolve: (parent, args,context,info) =>{return Pays.findOne({Pays_partenaires_Trade_Map:args.Pays_partenaires_Trade_Map})}
 	  },
-	  countryData: {
-		type: new GraphQLList(CountryType),
-		description: 'List of All Countries',
-		resolve: () => countryData
+
+	  Marche: {
+		type: new GraphQLList(Marche_Type),
+		description: 'Listes Des Marchés',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return Marche_mondial.find({Produit:args.Produit})}
+	  },
+	  Principaux_importateurs_mondiaux_query: {
+		type: new GraphQLList(Principaux_importateurs_mondiaux_Type),
+		description: 'List des importateurs mondiaux',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return Principaux_importateurs_mondiaux.find({Produit:args.Produit})}
 	  },
 
 	})

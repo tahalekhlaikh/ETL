@@ -3,7 +3,8 @@ const path = require('path');
 
 const {graphqlHTTP} = require('express-graphql')
 const app = express();
-const schema=require('./GraphQL/schema');
+const PaysSchema=require('./GraphQL/schema');
+
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
@@ -25,6 +26,8 @@ app.use(cors());
 
 
 const fileRoute = require('./routes/file');
+
+const ProduitRoute = require('./routes/produit');
 require('./db/db');
 
 
@@ -37,9 +40,12 @@ app.use(express.static(path.join(__dirname, '..', 'build')));
 
 
 app.use(fileRoute);
+app.use(ProduitRoute);
 app.use('/graphql', graphqlHTTP({
 	graphiql:true,
-	schema:schema
+	schema:PaysSchema
+
+
 }))
 
 
