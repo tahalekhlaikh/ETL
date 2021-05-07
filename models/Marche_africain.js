@@ -8,7 +8,7 @@ const  Marche_africainSchema = new Schema(
 		required: true,
 		trim: true
 	  },
-	   2019: {
+	  Expo_Impo_Intra_2019: {
 		type: String,
 		required: true,
 		trim: true

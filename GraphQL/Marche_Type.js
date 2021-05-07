@@ -19,6 +19,7 @@ const{
 		Exportations_2019:{type:GraphQLNonNull(GraphQLString)},
 		Taille_du_marche_2019:{type:GraphQLNonNull(GraphQLString)},
 		Produit:{type:GraphQLNonNull(GraphQLString)},
+		
 
 
 

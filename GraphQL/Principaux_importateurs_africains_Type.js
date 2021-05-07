@@ -7,8 +7,8 @@ const{
 	GraphQLID
 } = require('graphql')
 
- const Principaux_importateurs_mondiaux_Type =new GraphQLObjectType({
-    name:'Principaux_importateurs_marche_mondial',
+ const Principaux_importateurs_africains_Type =new GraphQLObjectType({
+    name:'Principaux_importateurs_africain',
     fields:()=>({
 		id:{type:GraphQLID},
 
@@ -23,4 +23,4 @@ const{
 
     })
 })
-module.exports= Principaux_importateurs_mondiaux_Type;
+module.exports= Principaux_importateurs_africains_Type;

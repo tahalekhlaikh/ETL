@@ -21,7 +21,8 @@ const Potentiel_exportation_MondeSchema = mongoose.Schema(
 		type: String,
 		required: true
 	  },
-	  Produit:{
+
+	  Pays:{
 		type: String,
 		required: true,
 		default: false

@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const Impo_AfriqueSchema = mongoose.Schema(
+const Expo_AfriqueSchema = mongoose.Schema(
 	{
 	 Pays: {
 		type: String,
 		required: true,
 		trim: true
 	  },
-	 2019: {
+	  Exportations_2019: {
 		type: String,
 		required: true,
 		trim: true
@@ -31,8 +31,8 @@ const Impo_AfriqueSchema = mongoose.Schema(
 
   );
 
-  const Principaux_importateurs_afrique = mongoose.model('Principaux_importateurs_afrique',Impo_AfriqueSchema);
-  module.exports = Principaux_importateurs_afrique;
+  const Principaux_exportateurs_afrique = mongoose.model('Principaux_exportateurs_afrique',Expo_AfriqueSchema);
+  module.exports = Principaux_exportateurs_afrique;
 
 
 

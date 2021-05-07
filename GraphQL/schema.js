@@ -1,8 +1,27 @@
 const Pays = require('../models/pays');
 const Marche_mondial= require('../models/marche_mondial');
 const Marche_Type=require('./Marche_Type')
+const IdentificationType=require('./Identification_Type')
 const Principaux_importateurs_mondiaux_Type=require('./Principaux_importateurs_mondiaux_Type')
 const Principaux_importateurs_mondiaux=require('../models/Principaux_importateurs_mondiaux');
+const Principaux_exportateurs_mondiaux=require('../models/Principaux_exportateurs_mondiaux');
+const Identification_produit=require('../models/Identification_produit');
+const Marche_africain=require('../models/Marche_africain');
+const Principaux_importateurs_africains=require('../models/Principaux_importateurs_africains');
+const Positionnement_du_Maroc=require('../models/Positionnement_du_Maroc');
+const Principaux_exportateurs_africains=require('../models/Principaux_exportateurs_africains');
+const Potentiel_exportation_monde=require('../models/Potentiel_exportation_monde');
+const Potentiel_exportation_afrique=require('../models/Potentiel_exportation_Afrique');
+const Exportation_Maroc=require('../models/Exportation_Maroc');
+const Principaux_exportateurs_mondiaux_Type=require('./Principaux_exportateurs_mondiaux_Type')
+const Principaux_importateurs_africains_Type=require('./Principaux_importateurs_africains_Type')
+const Principaux_exportateurs_africains_Type=require('./Principaux_exportateurs_africains_Type')
+const Marche_africain_Type=require('./Marche_africain_Type')
+const Position_Type=require('./Position_Type')
+const Potentiel_exportation_monde_Type=require('./Potentiel_exportation_monde_Type')
+const Potentiel_exportation_afrique_Type=require('./Potentiel_exportation_afrique_Type')
+const Exportation_Maroc_Type=require('./Exportation_Maroc_Type')
+
 const{
     GraphQLSchema,
     GraphQLObjectType,
@@ -141,7 +160,7 @@ const RootQueryType = new GraphQLObjectType({
 		},
 		resolve: (parent, args,context,info) =>{return Marche_mondial.find({Produit:args.Produit})}
 	  },
-	  Principaux_importateurs_mondiaux_query: {
+	  Principaux_importateurs_mondiaux: {
 		type: new GraphQLList(Principaux_importateurs_mondiaux_Type),
 		description: 'List des importateurs mondiaux',
 		args: {
@@ -151,7 +170,96 @@ const RootQueryType = new GraphQLObjectType({
 		},
 		resolve: (parent, args,context,info) =>{return Principaux_importateurs_mondiaux.find({Produit:args.Produit})}
 	  },
+	  Principaux_exportateurs_mondiaux: {
+		type: new GraphQLList(Principaux_exportateurs_mondiaux_Type),
+		description: 'List des exportateurs mondiaux',
+		args: {
 
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return Principaux_exportateurs_mondiaux.find({Produit:args.Produit})}
+	  },
+	  Principaux_importateurs_africains: {
+		type: new GraphQLList(Principaux_importateurs_africains_Type),
+		description: 'List des importateurs africains',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return Principaux_importateurs_africains.find({Produit:args.Produit})}
+	  },
+	  Principaux_exportateurs_africains: {
+		type: new GraphQLList(Principaux_exportateurs_africains_Type),
+		description: 'List des exportateurs africains',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return Principaux_exportateurs_africains.find({Produit:args.Produit})}
+	  },
+	  Marche_africain: {
+		type: new GraphQLList(Marche_africain_Type),
+		description: 'Description du marche africain',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return  Marche_africain.find({Produit:args.Produit})}
+	  },
+	  Identification:{
+		type: new GraphQLList(IdentificationType),
+		description: 'Identification du Produit',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return   Identification_produit.find({Produit:args.Produit})}
+	  },
+	  Position:{
+		type: new GraphQLList(Position_Type),
+		description: 'Positionnement_du_Maroc',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return   Positionnement_du_Maroc.find({Produit:args.Produit})}
+	  },
+	  Potentiel_exportation_monde:{
+		type: new GraphQLList(Potentiel_exportation_monde_Type),
+		description: 'Potentiel_exportation_monde',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return   Potentiel_exportation_monde.find({Produit:args.Produit})}
+	  },
+	  Potentiel_exportation_afrique:{
+		type: new GraphQLList(Potentiel_exportation_afrique_Type),
+		description: 'Potentiel_exportation_afrique',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return   Potentiel_exportation_afrique.find({Produit:args.Produit})}
+	  },
+	  Exportation_maroc:{
+		type: new GraphQLList(Exportation_Maroc_Type),
+		description: 'exportation_maroc',
+		args: {
+
+			Produit:{ type: GraphQLString},
+
+		},
+		resolve: (parent, args,context,info) =>{return  Exportation_Maroc.find({Produit:args.Produit})}
+	  },
 	})
   })
 

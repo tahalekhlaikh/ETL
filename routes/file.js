@@ -3,6 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const File = require('../models/file');
 const Pays = require('../models/pays');
+const List_produit = require('../models/List_produit');
 
 const Router = express.Router();
 var reader = require("xlsx");
@@ -128,6 +129,44 @@ Router.post('/choosen',function (req, res)  {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   Router.delete('/delete', async (req, res) => {
 
 	try {
@@ -141,8 +180,10 @@ Router.post('/choosen',function (req, res)  {
 fs.unlink(req.body.file_path, function (err) {
     if (err) throw err;
     // if no error, file has been deleted successfully
+	Pays.collection.drop();
     console.log('File deleted!');
 });
+
 		console.log("success")
 	} catch (error) {
 	  res.status(400).send('Error while downloading file. Try again later.');
