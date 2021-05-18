@@ -3,7 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const File = require('../models/file');
 const Pays = require('../models/pays');
-const List_produit = require('../models/List_produit');
+
 
 const Router = express.Router();
 var reader = require("xlsx");
@@ -20,10 +20,10 @@ const upload = multer({
     fileSize: 1000000 // max file size 1MB = 1000000 bytes
   },
   fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(jpeg|jpg|png|pdf|doc|docx|xlsx|xls)$/)) {
+    if (!file.originalname.match(/\.(xlsx|xls)$/)) {
       return cb(
         new Error(
-          'only upload files with jpg, jpeg, png, pdf, doc, docx, xslx, xls format.'
+          ' télécharger uniquement des fichiers au format xslx, xls.'
         )
       );
     }
@@ -39,15 +39,8 @@ Router.post(
 		console.log(res)
       const { year,nom,description} = req.body;
       const { path, mimetype} = req.file;
-      const file = new File({
-       year,
-	   nom,
-	   description,
+    File.insertMany([{nom:nom,year:year,description:description,file_path:path,mimetype:mimetype}])
 
-        file_path: path,
-        file_mimetype: mimetype
-      });
-      await file.save();
 
 
       res.send('file uploaded successfully.');
@@ -68,15 +61,126 @@ Router.post(
 
 );
 
+function jsonConcat(o1, o2) {
+	for (var key in o2) {
+	 o1[key] = o2[key];
+	}
+	return o1;
+   }
+
+Router.post(
+	'/upload_produit',
+	upload.single('file'),
+	async (req, res) => {
+	  try {
+
+		const { year,nom,description} = req.body;
+		const { path, mimetype} = req.file;
+		const file = new File({
+		 year,
+		 nom,
+		 description,
+
+		  file_path: path,
+		  file_mimetype: mimetype
+		});
+
+		const my_file = reader.readFile(req.file.path)
+		let data = []
+		const sheets = my_file.SheetNames
+
+		for(let i = 0; i < sheets.length; i++)
+		{
+		   const temp = reader.utils.sheet_to_json(
+			my_file.Sheets[my_file.SheetNames[i]])
+			if(i==0)(
+		   temp.forEach((res) => {
+			res.Produit=res.Produit.trimStart();
+			res.Produit=res.Produit.trimEnd();
+
+			  data.push(res)
+		   })
+			)
+		}
+
+		let test = JSON.stringify(data, null, 2);
+
+
+		var json2 = { nom: nom, year: year,description:description,file_path: path,file_mimetype: mimetype};
+		var output = {};
+		output = jsonConcat(output, data[0]);
+
+		output = jsonConcat(output, json2);
 
 
 
-Router.post('/choosen',function (req, res)  {
+
+		File.insertMany([output],function(error, docs) {console.log(error)});
+
+
+
+
+		res.send('file uploaded successfully.');
+
+
+
+	  } catch (error) {
+		res.status(400).send('Error while uploading file. Try again later.');
+	  }
+
+
+	},
+	(error, req, res, next) => {
+	  if (error) {
+		res.status(500).send(error.message);
+	  }
+	}
+
+  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Router.post('/choosen_pays',function (req, res)  {
 
 
 	  try {
 		console.log(req.body.id);
-		File.updateMany({}, {
+		File.updateMany({attribut:"null"}, {
 			choosen:false,
 		}, function(err, affected, resp) {
 		   console.log(resp);
@@ -186,7 +290,7 @@ fs.unlink(req.body.file_path, function (err) {
 
 		console.log("success")
 	} catch (error) {
-	  res.status(400).send('Error while downloading file. Try again later.');
+	  res.status(400).send('Erreur lors du téléchargement du fichier. Réessayez plus tard');
 	}
   });
 
@@ -200,17 +304,45 @@ fs.unlink(req.body.file_path, function (err) {
 
 
 
-Router.get('/getAllFiles', async (req, res) => {
+Router.get('/getCountriesFiles', async (req, res) => {
   try {
-    const files = await File.find({});
+    const files = await File.find({Secteur:"null"});
     const sortedByCreationDate = files.sort(
       (a, b) => b.createdAt - a.createdAt
     );
     res.send(sortedByCreationDate);
   } catch (error) {
-    res.status(400).send('Error while getting list of files. Try again later.');
+    res.status(400).send("Erreur lors de l'obtention de la liste des fichiers. Réessayez plus tard.");
   }
 });
+
+
+Router.get('/getProductsFiles', async (req, res) => {
+	try {
+
+		console.log(req.query.selectedOption)
+	  const files = await File.find({Produit:req.query.selectedOption});
+	  const sortedByCreationDate = files.sort(
+		(a, b) => b.createdAt - a.createdAt
+	  );
+	  res.send(sortedByCreationDate);
+	} catch (error) {
+	  res.status(400).send("Erreur lors de l'obtention de la liste des fichiers. Réessayez plus tard.");
+	}
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Router.get('/download/:id', async (req, res) => {
   try {
@@ -220,7 +352,7 @@ Router.get('/download/:id', async (req, res) => {
     });
     res.sendFile(path.join(__dirname, '..', file.file_path));
   } catch (error) {
-    res.status(400).send('Error while downloading file. Try again later.');
+    res.status(400).send('Erreur lors du téléchargement du fichier. Réessayez plus tard.');
   }
 });
 

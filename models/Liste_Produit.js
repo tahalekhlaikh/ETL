@@ -1,9 +1,20 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const  List_ProduitSchema = new Schema(
+const  Liste_ProduitsSchema = new Schema(
 	{
 		Secteur: {
+		type: String,
+		required: true,
+		trim: true
+	  },
+
+	  Code_SH: {
+		type: String,
+		required: true,
+		trim: true
+	  },
+	  attribut: {
 		type: String,
 		required: true,
 		trim: true
@@ -13,12 +24,7 @@ const  List_ProduitSchema = new Schema(
 		required: true,
 		trim: true
 	  },
-	  Code_SH: {
-		type: String,
-		required: true,
-		trim: true
-	  },
-	  Attribut: {
+	Produit: {
 		type: String,
 		required: true,
 		trim: true
@@ -28,8 +34,8 @@ const  List_ProduitSchema = new Schema(
 
   );
 
-  const List_Produit = mongoose.model('List_Produit ',List_ProduitSchema);
-  module.exports = List_Produit ;
+  const Liste_Produits = mongoose.model('Liste_Produits',Liste_ProduitsSchema);
+  module.exports = Liste_Produits ;
 
 
 

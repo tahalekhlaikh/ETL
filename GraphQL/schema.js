@@ -12,6 +12,7 @@ const Positionnement_du_Maroc=require('../models/Positionnement_du_Maroc');
 const Principaux_exportateurs_africains=require('../models/Principaux_exportateurs_africains');
 const Potentiel_exportation_monde=require('../models/Potentiel_exportation_monde');
 const Potentiel_exportation_afrique=require('../models/Potentiel_exportation_Afrique');
+const Liste_produits=require('../models/Liste_Produit');
 const Exportation_Maroc=require('../models/Exportation_Maroc');
 const Principaux_exportateurs_mondiaux_Type=require('./Principaux_exportateurs_mondiaux_Type')
 const Principaux_importateurs_africains_Type=require('./Principaux_importateurs_africains_Type')
@@ -21,6 +22,9 @@ const Position_Type=require('./Position_Type')
 const Potentiel_exportation_monde_Type=require('./Potentiel_exportation_monde_Type')
 const Potentiel_exportation_afrique_Type=require('./Potentiel_exportation_afrique_Type')
 const Exportation_Maroc_Type=require('./Exportation_Maroc_Type')
+const File_Type=require('./File_Type')
+const File = require('../models/file');
+
 
 const{
     GraphQLSchema,
@@ -259,6 +263,24 @@ const RootQueryType = new GraphQLObjectType({
 
 		},
 		resolve: (parent, args,context,info) =>{return  Exportation_Maroc.find({Produit:args.Produit})}
+	  },
+	 countries:{
+		type: new GraphQLList(CountryType),
+		description: 'Liste Pays',
+
+		resolve: (parent, args,context,info) =>{return Pays.find()}
+	  },
+	  File:{
+		type: new GraphQLList(File_Type),
+		description: 'Liste Fichiers',
+
+		resolve: (parent, args,context,info) =>{return File.find()}
+	  },
+	  Liste_produits:{
+		type: new GraphQLList(IdentificationType),
+		description: 'Liste Produits',
+
+		resolve: (parent, args,context,info) =>{return  Identification_produit.find()}
 	  },
 	})
   })
