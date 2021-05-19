@@ -15,9 +15,9 @@ const{
 
 
 		nom:{type:GraphQLNonNull(GraphQLString)},
-		Produit:{type:GraphQLNonNull(GraphQLString)},
-		Secteur:{type:GraphQLNonNull(GraphQLString)},
-		Filiere:{type:GraphQLNonNull(GraphQLString)},
+		Produit:{type:GraphQLString},
+		Secteur:{type:GraphQLString},
+		Filiere:{type:GraphQLString},
 
 
 

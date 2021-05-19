@@ -16,6 +16,7 @@ const Potentiel_exportation_Afrique = require('../models/Potentiel_exportation_A
 const Potentiel_exportation_Monde = require('../models/Potentiel_exportation_monde');
 const Liste_Produits = require('../models/Liste_Produit');
 const File = require('../models/file');
+const { Z_NEED_DICT } = require('zlib');
 
 const Router = express.Router();
 
@@ -255,23 +256,12 @@ Router.get('/test1', async (req, res) => {
 
 
 
-Router.post('/choosen_produit',function (req, res)  {
+Router.post('/choosen_produit',async function (req, res)  {
 
 
 	try {
 
 
-	  File.updateMany({Produit:req.body.Produit}, {
-		  choosen:false,
-	  }, function(err, affected, resp) {
-
-	  })
-	  File.updateOne({_id:req.body.id}, {
-		  choosen:true,
-
-	  }, function(err, affected, resp) {
-
-	  })
 
 
 
@@ -386,6 +376,22 @@ Router.post('/choosen_produit',function (req, res)  {
 													   )}
 
 
+													   File.updateMany({Produit:req.body.Produit}, {
+														choosen:false,
+
+													}, function(err, affected, resp) {
+													  console.log(req.body.id)
+
+													})
+													console.log(req.body.id)
+													await File.updateOne({_id:req.body.id}, {
+
+														choosen:true,
+
+													}, function(err, affected, resp) {
+													  console.log(req.body.id)
+
+													})
 
 
 	  //Pays.insertMany(JSON.parse(test), function(error, docs) {});
