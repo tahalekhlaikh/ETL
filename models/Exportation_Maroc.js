@@ -24,6 +24,10 @@ const  Exportation_MarocSchema = mongoose.Schema(
 		type: String,
 		required: true
 	  },
+	  Commentaire: {
+		type: String,
+		required: true
+	  },
 	  Produit: {
 		type: String,
 		required: true,

@@ -180,7 +180,7 @@ Router.post('/choosen_pays',function (req, res)  {
 
 	  try {
 		console.log(req.body.id);
-		File.updateMany({attribut:"null"}, {
+		File.updateMany({Secteur:"null"}, {
 			choosen:false,
 		}, function(err, affected, resp) {
 		   console.log(resp);

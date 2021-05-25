@@ -13,10 +13,12 @@ const{
 		id:{type:GraphQLID},
         Pays:{type:GraphQLNonNull(GraphQLString)},
 
-		Potentiel_exportation:{type:GraphQLNonNull(GraphQLString)},
-		Exportations_actuelles:{type:GraphQLNonNull(GraphQLString)},
-        Potentiel_inexploite:{type:GraphQLNonNull(GraphQLString)},
+
+		Marche_previsionnel:{type:GraphQLNonNull(GraphQLString)},
+		Exportations_actuelles_Maroc:{type:GraphQLNonNull(GraphQLString)},
+        Importations:{type:GraphQLNonNull(GraphQLString)},
 		Produit:{type:GraphQLNonNull(GraphQLString)},
+		PDM_actuelle_Maroc:{type:GraphQLNonNull(GraphQLString)},
 
 
 

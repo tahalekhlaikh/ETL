@@ -20,6 +20,7 @@ const{
 		Part_du_marche:{type:GraphQLNonNull(GraphQLString)},
 		Classement:{type:GraphQLNonNull(GraphQLString)},
 		Produit:{type:GraphQLNonNull(GraphQLString)},
+	    Commentaire:{type:GraphQLNonNull(GraphQLString)},
 
 
 

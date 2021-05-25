@@ -270,12 +270,18 @@ const RootQueryType = new GraphQLObjectType({
 
 		resolve: (parent, args,context,info) =>{return Pays.find()}
 	  },
-	  File:{
+	  File_pays:{
 		type: new GraphQLList(File_Type),
 		description: 'Liste Fichiers',
 
+		resolve: (parent, args,context,info) =>{return File.find({'Secteur': "null",'choosen':true})}
+	  },
+	  File_produit:{
+		type: new GraphQLList(File_Type),
+		description: 'Liste Fichiers',
 		resolve: (parent, args,context,info) =>{return File.find({'Secteur': {$ne : "null"}})}
 	  },
+
 	  Liste_produits:{
 		type: new GraphQLList(IdentificationType),
 		description: 'Liste Produits',

@@ -4,7 +4,8 @@ const{
     GraphQLString,
 
     GraphQLNonNull,
-	GraphQLID
+	GraphQLID,
+	GraphQLBoolean
 } = require('graphql')
 
  const File_Type =new GraphQLObjectType({
@@ -18,6 +19,8 @@ const{
 		Produit:{type:GraphQLString},
 		Secteur:{type:GraphQLString},
 		Filiere:{type:GraphQLString},
+		year:{type:GraphQLString},
+		choosen:{type:GraphQLBoolean},
 
 
 

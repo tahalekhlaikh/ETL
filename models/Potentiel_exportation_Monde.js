@@ -7,22 +7,27 @@ const Potentiel_exportation_MondeSchema = mongoose.Schema(
 		required: true,
 		trim: true
 	  },
-	  Potentiel_exportation: {
+	 Pays: {
 		type: String,
 		required: true,
 		trim: true
 	  },
-	  Exportations_actuelles: {
+	  Marche_previsionnel: {
 		type: String,
 		required: true,
 		trim: true
 	  },
-	  Potentiel_inexploite: {
+	  Exportations_actuelles_Maroc: {
+		type: String,
+		required: true,
+		trim: true
+	  },
+	  Importations: {
 		type: String,
 		required: true
 	  },
 
-	  Pays:{
+	  PDM_actuelle_Maroc:{
 		type: String,
 		required: true,
 		default: false

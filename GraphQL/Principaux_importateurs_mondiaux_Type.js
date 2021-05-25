@@ -10,6 +10,7 @@ const{
  const Principaux_importateurs_mondiaux_Type =new GraphQLObjectType({
     name:'Principaux_importateurs_marche_mondial',
     fields:()=>({
+
 		id:{type:GraphQLID},
 
         Pays:{type:GraphQLNonNull(GraphQLString)},
