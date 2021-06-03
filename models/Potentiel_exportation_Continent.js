@@ -4,17 +4,17 @@ const Potentiel_exportation_ContinentSchema = mongoose.Schema(
 	{
 	 Produit: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Potentiel_exportation: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Exportations_actuelles: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Potentiel_inexploite: {
@@ -23,7 +23,7 @@ const Potentiel_exportation_ContinentSchema = mongoose.Schema(
 	  },
 	  Produit:{
 		type: String,
-		required: true,
+		required: false,
 		default: false
 	  },
 

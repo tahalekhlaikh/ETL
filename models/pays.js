@@ -80,6 +80,11 @@ const PaysSchema = new mongoose.Schema({
 	Importations_Maroc_2018:String,
 	Importations_Maroc_2019:String,
 	TCAM_2012_2019_des_importations_marocaines:String,
+	PIB_2019:String,
+	Depenses_de_consommation_des_menages_2019:String,
+	Depenses_de_consommation_des_administrations_2019:String,
+	FBCF_2019:String,
+	Exportations_Importations_2019:String,
 
   });
 

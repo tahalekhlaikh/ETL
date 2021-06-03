@@ -122,6 +122,11 @@ const CountryType =new GraphQLObjectType({
 		Importations_Maroc_2018:{type:(GraphQLString)},
 		Importations_Maroc_2019:{type:(GraphQLString)},
 		TCAM_2012_2019_des_importations_marocaines:{type:(GraphQLString)},
+		PIB_2019:{type:(GraphQLString)},
+		Depenses_de_consommation_des_menages_2019:{type:(GraphQLString)},
+		Depenses_de_consommation_des_administrations_2019:{type:(GraphQLString)},
+		FBCF_2019:{type:(GraphQLString)},
+		Exportations_Importations_2019:{type:(GraphQLString)},
 
     })
 })

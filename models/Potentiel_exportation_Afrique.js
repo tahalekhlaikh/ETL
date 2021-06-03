@@ -4,33 +4,33 @@ const Potentiel_exportation_AfriqueSchema = mongoose.Schema(
 	{
 		Produit: {
 			type: String,
-			required: true,
+			required: false,
 			trim: true
 		  },
 		 Pays: {
 			type: String,
-			required: true,
+			required: false,
 			trim: true
 		  },
 		  Marche_previsionnel: {
 			type: String,
-			required: true,
+			required: false,
 			trim: true
 		  },
 		  Exportations_actuelles_Maroc: {
 			type: String,
-			required: true,
+			required: false,
 			trim: true
 		  },
 		  Importations: {
 			type: String,
-			required: true
+			required: false,
 		  },
 
 		  PDM_actuelle_Maroc:{
 			type: String,
-			required: true,
-			default: false
+
+			required: false,
 		  },
 
 	},

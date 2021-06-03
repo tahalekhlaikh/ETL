@@ -4,26 +4,26 @@ const IdentificationSchema = mongoose.Schema(
 	{
 	 Secteur: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Filiere: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Code_SH: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Produit: {
 		type: String,
-		required: true
+		required: false,
 	  },
 	  Marche_mondial: {
 		type: String,
-		required: true,
+		required: false,
 		default: false
 	  },
 

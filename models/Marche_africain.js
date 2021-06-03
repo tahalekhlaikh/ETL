@@ -5,17 +5,17 @@ const  Marche_africainSchema = new Schema(
 	{
 	 Expo_Impo_Intra: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Expo_Impo_Intra_2019: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	   Produit: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 

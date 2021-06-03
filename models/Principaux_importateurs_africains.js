@@ -2,30 +2,30 @@ const mongoose = require('mongoose');
 
 const Impo_AfriqueSchema = mongoose.Schema(
 	{
-	 Pays: {
-		type: String,
-		required: true,
-		trim: true
-	  },
-	  Importations_2019: {
-		type: String,
-		required: true,
-		trim: true
-	  },
-	  PDM_2019: {
-		type: String,
-		required: true,
-		trim: true
-	  },
-	  TCAM_2012_2019: {
-		type: String,
-		required: true
-	  },
-	  Produit: {
-		type: String,
-		required: true,
-		default: false
-	  },
+		Pays: {
+			type: String,
+			required: false,
+			trim: true
+		  },
+		  Importations_2019: {
+			type: String,
+			required: false,
+			trim: true
+		  },
+		  PDM_2019: {
+			type: String,
+			required: false,
+			trim: true
+		  },
+		  TCAM_2012_2019: {
+			type: String,
+			required: false,
+		  },
+		  Produit: {
+			type: String,
+			required: false,
+			default: false
+		  },
 
 	},
 

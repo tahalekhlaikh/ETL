@@ -5,28 +5,28 @@ const  Liste_ProduitsSchema = new Schema(
 	{
 		Secteur: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 
 	  Code_SH: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  attribut: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Filiere: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	Produit: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 

@@ -348,6 +348,7 @@ Router.post('/choosen_produit',async function (req, res)  {
 									   )
 									   else if(i==8)(
 										  temp.forEach((res) => {
+											console.log("hey")
 											res.Produit=res.Produit.trimStart();
 											res.Produit=res.Produit.trimEnd();
 									   console.log(res)
@@ -358,6 +359,7 @@ Router.post('/choosen_produit',async function (req, res)  {
 
 											   else if(i==9)(
 												  temp.forEach((res) => {
+													console.log("hey")
 													res.Produit=res.Produit.trimStart();
 													res.Produit=res.Produit.trimEnd();
 											   console.log(res)
@@ -367,6 +369,7 @@ Router.post('/choosen_produit',async function (req, res)  {
 												   )
 												   else if(i==10)(
 													  temp.forEach((res) => {
+														  console.log("hey")
 														res.Produit=res.Produit.trimStart();
 														res.Produit=res.Produit.trimEnd();
 												   console.log(res)

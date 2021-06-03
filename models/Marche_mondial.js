@@ -4,26 +4,26 @@ const  MarcheSchema = mongoose.Schema(
 	{
 	 Continent: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Importations_2019: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Exportations_2019: {
 		type: String,
-		required: true,
+		required: false,
 		trim: true
 	  },
 	  Taille_du_marche_2019: {
 		type: String,
-		required: true
+		required: false,
 	  },
 	  Produit: {
 		type: String,
-		required: true,
+		required: false,
 		default: false
 	  },
 
