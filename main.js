@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const userroute= require('./routes/auth');
 const {graphqlHTTP} = require('express-graphql')
 const app = express();
 const PaysSchema=require('./GraphQL/schema');
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 
 const cors = require('cors');
 app.use(cors());
-
+app.use(userroute);
 
 
 
