@@ -10,14 +10,14 @@ const{
  const Principaux_exportateurs_africains_Type =new GraphQLObjectType({
     name:'Principaux_exportateurs_africains',
     fields:()=>({
-		id:{type:GraphQLID},
+		id:{type:(GraphQLString)},
 
-        Pays:{type:GraphQLNonNull(GraphQLString)},
+        Pays:{type:(GraphQLString)},
 
-		PDM_2019:{type:GraphQLNonNull(GraphQLString)},
-		TCAM_2012_2019:{type:GraphQLNonNull(GraphQLString)},
-        Produit:{type:GraphQLNonNull(GraphQLString)},
-        Exportations_2019:{type:GraphQLNonNull(GraphQLString)},
+		PDM_2019:{type:(GraphQLString)},
+		TCAM_2012_2019:{type:(GraphQLString)},
+        Produit:{type:(GraphQLString)},
+        Exportations_2019:{type:(GraphQLString)},
 
 
 

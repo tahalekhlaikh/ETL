@@ -11,14 +11,14 @@ const{
     name:'Potentiel_exportation_Monde_Type',
     fields:()=>({
 		id:{type:GraphQLID},
-        Pays:{type:GraphQLNonNull(GraphQLString)},
+        Pays:{type:(GraphQLString)},
 
 
-		Marche_previsionnel:{type:GraphQLNonNull(GraphQLString)},
-		Exportations_actuelles_Maroc:{type:GraphQLNonNull(GraphQLString)},
-        Importations:{type:GraphQLNonNull(GraphQLString)},
-		Produit:{type:GraphQLNonNull(GraphQLString)},
-		PDM_actuelle_Maroc:{type:GraphQLNonNull(GraphQLString)},
+		Marche_previsionnel:{type:(GraphQLString)},
+		Exportations_actuelles_Maroc:{type:(GraphQLString)},
+        Importations:{type:(GraphQLString)},
+		Produit:{type:(GraphQLString)},
+		PDM_actuelle_Maroc:{type:(GraphQLString)},
 
 
 
