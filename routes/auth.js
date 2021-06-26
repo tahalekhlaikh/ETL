@@ -60,6 +60,8 @@ router.post('/login', async (req, res) => {
   return res.json({
     success: true,
     role: user.role,
+    isActive: user.isActive,
+
     token: `${token}` });
 
 
