@@ -3,7 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const File = require('../models/file');
 const Pays = require('../models/pays');
-
+const User = require('../models/user');
 
 const Router = express.Router();
 var reader = require("xlsx");
@@ -230,6 +230,41 @@ Router.post('/choosen_pays',function (req, res)  {
 	}
 
   );
+
+ Router.post('/modify_user',function (req, res)  {
+
+
+	try {
+	  console.log(req.body.selectedOption.value);
+	  console.log(req.body.selectedOption1.value);
+console.log(req.body.id)
+
+User.updateOne({_id:req.body.id}, {
+	role:req.body.selectedOption.value,
+	isActive:req.body.selectedOption1.value
+
+}, function(err, affected, resp) {
+   console.log(resp);
+})
+
+
+	  //Pays.insertMany(JSON.parse(test), function(error, docs) {});
+
+	  res.send('file choosen successfully.');
+
+	} catch (error) {
+	  res.status(400).send('Error while try Choosin file. Try again later.');
+	}
+
+
+  },
+  (error, req, res, next) => {
+	if (error) {
+	  res.status(500).send(error.message);
+	}
+  }
+
+);
 
 
 
