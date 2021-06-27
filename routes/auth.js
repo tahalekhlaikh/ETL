@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
   const password = req.body.password;
 
  // const user = User.findOne({username: req.body.username, isActive : "Rejected"})
-  const user = await User.findOne({ username :username,isActive:'Rejected' }).select("+password");
+  const user = await User.findOne({ username :username,isActive:"Accepted" }).select("+password");
   // return if there was no user with this username found in the database
   if (!user) {
     errors.message = "No Account Found";
@@ -122,7 +122,7 @@ router.post('/status'),async (req, res) => {
     return res.status(400).json({message:"Old password incorrect."});
   }
 
-  console.log(dbUser)
+
   dbUser.password = newPassword;
   console.log(dbUser.password)
   try {
